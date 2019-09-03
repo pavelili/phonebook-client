@@ -5,7 +5,7 @@ export default function ContactItem({ name, phoneNumber }){
   const number = phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
   return(
     <>
-      <h1>{name} - Phone #: {number}</h1>
+      <h3>{name} - Phone #: {number}</h3>
     </>
   );
 }
