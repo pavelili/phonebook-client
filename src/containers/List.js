@@ -1,16 +1,21 @@
 import { connect } from 'react-redux';
 import ContactList from '../components/contacts/ContactList';
+import { getContactsArr } from '../selectors/contactSelectors';
+import { updateList } from '../actions/contactActions';
 
-const mapStateToProps = () => ({
-  contactArr: [{
-    name: 'Georgey', phoneNumber: '1234567890'
-  }, {
-    name: 'Alfred', phoneNumber: '0987654321'
-  }]
+const mapStateToProps = state => ({
+  contactArr: getContactsArr(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateList(){
+    dispatch(updateList());
+  }
 });
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ContactList);
 
 // contactArr
