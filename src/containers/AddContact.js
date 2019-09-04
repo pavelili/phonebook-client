@@ -1,15 +1,24 @@
 import { connect } from 'react-redux';
 import AddContactForm from '../components/contacts/AddContactForm';
+import { getNameInput, getNumberInput } from '../selectors/contactSelectors';
+import { updateName, updateNumber, addContact } from '../actions/contactActions';
 
-const mapStateToProps = () => ({
-  nameInput: 'hello',
-  numberInput: '1234567890'
+const mapStateToProps = state => ({
+  nameInput: getNameInput(state),
+  numberInput: getNumberInput(state)
 });
 
-const mapDispatchToProps = () => ({
-  nameChange: ()=>{},
-  numberChange: ()=>{},
-  contactSubmit: ()=>{}
+const mapDispatchToProps = dispatch => ({
+  nameChange({ target }){
+    dispatch(updateName(target.value));
+  },
+  numberChange({ target }){
+    dispatch(updateNumber(target.value));
+  },
+  contactSubmit(event, nameInput, numberInput){
+    event.preventDefault();
+    dispatch(addContact(nameInput, numberInput));
+  }
 });
 
 export default connect(
@@ -22,3 +31,5 @@ export default connect(
 // nameChange,
 // numberInput,
 // numberChange
+
+// event, nameInput, numberInput
