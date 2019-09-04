@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactItem component render a contact item 1`] = `
+<Fragment>
+  <h3>
+    George
+     - Phone #: 
+    123-456-7890
+  </h3>
+</Fragment>
+`;
